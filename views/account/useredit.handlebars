@@ -1,0 +1,69 @@
+<header class="masthead">
+    <div class="container md-padding">
+
+        <div class="row bg-light rounded shadow p-5">
+
+            <div class="col-md-12">
+
+                <div class="row text-center mt-5">
+                    <div class="col-md-8 offset-md-2">
+
+                        <h2 class="title">Kullanıcı Düzenle</h2>
+
+                    </div>
+                </div>
+
+                {{#if sessionMessage.message}}
+                <div class="{{sessionMessage.type}}" id="sessionMessage">
+                    {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
+                            class="fa fa-times text-dark"></i></a>
+                </div>
+                {{/if}}
+
+                <form action="/userlist/{{user.id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input class="form-control" name="name" type="text" value="{{user.name}}"
+                                    required="required" data-validation-required-message="Please enter a title.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="surname" type="text" value="{{user.surname}}"
+                                    required="required" data-validation-required-message="Please enter a title.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="email" type="email" value="{{user.email}}"
+                                    required="required" data-validation-required-message="Please enter a title.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="age" type="text" value="{{user.age}}"
+                                    required="required" data-validation-required-message="Please enter a title.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="password" type="password" value="{{user.password}}"
+                                    required="required" data-validation-required-message="Please enter a title.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 clearfix">* Zorunlu alanları belirtir.</div>
+                        <div class="col-md-4 offset-md-4 text-center mt-3">
+                            <button type="submit" class="btn btn-success btn-block">Kaydet</button>
+
+                        </div>
+                        <div class="col-md-4 offset-md-4 text-center mt-3">
+
+                            <a class="btn btn-warning btn-block" href="/userlist">
+                                Kaydetmeden Çık</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>

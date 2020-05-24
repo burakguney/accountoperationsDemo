@@ -1,0 +1,72 @@
+<header class="masthead">
+    <div class="container md-padding">
+
+        <div class="row row border bg-light text-dark shadow rounded">
+
+            <div class="col-lg-12 p-5">
+                <div class="row text-center">
+                    <div class="col-md-4 offset-md-4">
+                        <div class="section-header">
+                            <h2 class="title">Hesap Oluştur</h2>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                {{#if sessionMessage.message}}
+                <div class="{{sessionMessage.type}}" id="sessionMessage">
+                    {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
+                            class="fa fa-times text-dark"></i></a>
+                </div>
+                {{/if}}
+
+
+                <form action="/register" method="POST">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="form-group">
+                                <input class="form-control" name="name" type="text" placeholder="Adınız *"
+                                    required="required" data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="surname" type="text" placeholder="Soyadınız *"
+                                    required="required" data-validation-required-message="Please enter your surname.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="email" type="email" placeholder="E-Posta *"
+                                    required="required"
+                                    data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="age" type="text" placeholder="Yaş *"
+                                    required="required" data-validation-required-message="Please enter your age.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="password" type="password" placeholder="Parola *"
+                                    required="required" data-validation-required-message="Please enter your pasword.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 offset-md-3 clearfix">
+                            * Zorunlu alanları belirtir.
+                        </div>
+                        <div class="col-md-4 offset-md-4 text-center mt-3">
+                            <button type="submit" class="btn btn-success btn-block">Kaydet
+                            </button>
+                        </div>
+                        <div class="col-md-4 offset-md-4 text-center mt-3">
+                            <a href="/login" class="btn btn-primary btn-block">Hesabın var
+                                mı?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>

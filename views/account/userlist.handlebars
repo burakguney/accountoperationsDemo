@@ -1,0 +1,65 @@
+<header class="masthead">
+    <div class="container md-padding">
+
+        <div class="row bg-light rounded shadow p-5">
+
+            <div class="col-md-12">
+
+                <div class="row text-center">
+                    <div class="col-md-4 offset-md-4">
+                        <div class="section-header">
+                            <h2 class="title">Kullanıcılar</h2>
+                        </div>
+                    </div>
+                </div>
+
+
+                {{#if sessionMessage.message}}
+                <div class="{{sessionMessage.type}}" id="sessionMessage">
+                    {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
+                            class="fa fa-times text-dark"></i></a>
+                </div>
+                {{/if}}
+
+
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th>AD</th>
+                            <th>SOYAD</th>
+                            <th>E-POSTA</th>
+                            <th>YAŞ</th>
+                            <th>DÜZENLE</th>
+                            <th>SİL</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                        {{#each users}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{surname}}</td>
+                            <td>{{email}}</td>
+                            <td>{{age}}</td>
+                            <td>
+                                <a class="btn btn-primary btn-block" href="/userlist/edit/{{id}}">Düzenle</a>
+                            </td>
+                            <td>
+                                <form action="/userlist/{{id}}?_method=DELETE" method="POST">
+                                    <input type="hidden" name="_method" value="SİL">
+                                    <button type="submit" class="btn btn-danger btn-block">Sil</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</header>
