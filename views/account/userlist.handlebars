@@ -1,14 +1,15 @@
 <header class="masthead">
     <div class="container md-padding">
 
-        <div class="row bg-light rounded shadow p-5">
+        <div class="row bg-light rounded shadow">
 
-            <div class="col-md-12">
+            <div class="col-md-12 mt-5 mb-5">
 
-                <div class="row text-center">
+                <div class="row text-center mb-3">
                     <div class="col-md-4 offset-md-4">
                         <div class="section-header">
                             <h2 class="title">Kullanıcılar</h2>
+                            <hr>
                         </div>
                     </div>
                 </div>
@@ -21,44 +22,45 @@
                 </div>
                 {{/if}}
 
+                <div class="table-responsive">
+                    <table class="table">
 
-                <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>AD</th>
+                                <th>SOYAD</th>
+                                <th>E-POSTA</th>
+                                <th>YAŞ</th>
+                                <th>DÜZENLE</th>
+                                <th>SİL</th>
+                            </tr>
+                        </thead>
 
-                    <thead>
-                        <tr>
-                            <th>AD</th>
-                            <th>SOYAD</th>
-                            <th>E-POSTA</th>
-                            <th>YAŞ</th>
-                            <th>DÜZENLE</th>
-                            <th>SİL</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-
-                        {{#each users}}
-                        <tr>
-                            <td>{{name}}</td>
-                            <td>{{surname}}</td>
-                            <td>{{email}}</td>
-                            <td>{{age}}</td>
-                            <td>
-                                <a class="btn btn-primary btn-block" href="/userlist/edit/{{id}}">Düzenle</a>
-                            </td>
-                            <td>
-                                <form action="/userlist/{{id}}?_method=DELETE" method="POST">
-                                    <input type="hidden" name="_method" value="SİL">
-                                    <button type="submit" class="btn btn-danger btn-block">Sil</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {{/each}}
+                        <tbody>
 
 
-                    </tbody>
-                </table>
+                            {{#each users}}
+                            <tr>
+                                <td>{{name}}</td>
+                                <td>{{surname}}</td>
+                                <td>{{email}}</td>
+                                <td>{{age}}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-block" href="/userlist/edit/{{id}}">Düzenle</a>
+                                </td>
+                                <td>
+                                    <form action="/userlist/{{id}}?_method=DELETE" method="POST">
+                                        <input type="hidden" name="_method" value="SİL">
+                                        <button type="submit" class="btn btn-danger btn-block">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

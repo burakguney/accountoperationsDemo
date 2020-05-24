@@ -5,12 +5,12 @@ const User = require('../models/User');
 
 router.get('/', (req, res) => {
     console.log(req.session);
-    res.render("account/home");
+    res.render("account/home", { title: 'Anasayfa' });
 })
 
 router.get('/register', (req, res) => {
     if (!req.session.userId) {
-        res.render("account/register");
+        res.render("account/register", { title: 'Hesap Oluştur' });
 
     }
     else {
@@ -50,7 +50,7 @@ router.post('/register', (req, res) => {
 
 router.get('/login', (req, res) => {
     if (!req.session.userId) {
-        res.render("account/login");
+        res.render("account/login", { title: 'Giriş Yap' });
 
     }
     else {
@@ -160,7 +160,7 @@ router.get('/userlist/edit/:id', (req, res) => {
             if (req.params.id == req.session.userId) {
                 res.render("account/useredit", {
                     user: user,
-                    title: 'Admin Kullanıcı Düzenle'
+                    title: 'Kullanıcı Düzenle'
                 })
             }
             else {
