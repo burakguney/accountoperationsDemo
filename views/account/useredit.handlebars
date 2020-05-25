@@ -23,7 +23,7 @@
                 <form action="/userlist/{{user.id}}?_method=PUT" method="POST">
                     <input type="hidden" name="_method" value="PUT">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6 offset-md-3">
                             <div class="form-group">
                                 <input class="form-control" name="name" type="text" value="{{user.name}}"
                                     required="required" data-validation-required-message="Please enter a title.">
@@ -51,7 +51,7 @@
                             </div>
 
                         </div>
-                        <div class="col-md-12 clearfix">* Zorunlu alanları belirtir.</div>
+                        <div class="col-md-6 offset-md-3 clearfix">* Zorunlu alanları belirtir.</div>
                         <div class="col-md-4 offset-md-4 text-center mt-3">
                             <button type="submit" class="btn btn-success btn-block">Kaydet</button>
 
