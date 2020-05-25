@@ -115,7 +115,7 @@ router.get('/userlist', (req, res) => {
     else {
 
         User.find({}).then((users) => {
-            if (users.length != 0) {
+            if (req.session.userId) {
                 res.render("account/userlist", {
                     users: users,
                     title: 'Kullanıcılar'
@@ -133,11 +133,12 @@ router.delete('/userlist/:id', (req, res) => {
 
     if (req.params.id == req.session.userId) {
         User.deleteOne({ _id: req.params.id }).then(() => {
+            req.session.userId = ""
             req.session.sessionMessage = {
-                type: "alert alert-warning text-center",
-                message: "Kullanıcı silindi!"
+                type: "alert alert-danger text-center",
+                message: "Silme işlemi başarılı ve çıkış yapıldı!"
             }
-            res.redirect("/userlist")
+            res.redirect("/login")
         })
     } else {
         req.session.sessionMessage = {
