@@ -26,14 +26,26 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
                             <div class="form-group">
-                                <input class="form-control" name="email" type="email" placeholder="E-Posta *"
-                                    required="required"
+                                <input class="form-control" id="userEmail" name="email" type="email" value="{{email}}"
+                                    placeholder="E-Posta *" required="required"
                                     data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" name="password" type="password" placeholder="Parola *"
-                                    required="required" data-validation-required-message="Please enter your pasword.">
+                                <input class="form-control" id="userPassword" name="password" type="password"
+                                    placeholder="Parola *" required="required"
+                                    data-validation-required-message="Please enter your pasword.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" id="checkBox" class=""
+                                            onclick="if(this.checked){setStorage()}else{deleteStorage()}"
+                                            aria-label="Checkbox for following text input">
+                                    </div>
+                                    <span class="p-1">Beni hatırla</span>
+                                </div>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -53,3 +65,35 @@
         </div>
     </div>
 </header>
+<script>
+    let userEmail = document.getElementById("userEmail");
+    let userPassword = document.getElementById("userPassword");
+    let checkBox = document.getElementById("checkBox");
+
+
+        function setStorage() {
+            userEmail.addEventListener("change", function () {
+                localStorage.setItem("email", userEmail.value);
+            })
+            userPassword.addEventListener("change", function () {
+                localStorage.setItem("password", userPassword.value);
+            })
+            localStorage.setItem("email", userEmail.value);
+            localStorage.setItem("password", userPassword.value);
+            localStorage.setItem("isChecked", true);
+        }
+    
+
+
+    function deleteStorage() {
+        localStorage.clear();
+        userEmail.value = "";
+        userPassword.value = "";
+    }
+
+    userEmail.value = localStorage.getItem("email");
+    userPassword.value = localStorage.getItem("password");
+    checkBox.checked = localStorage.getItem("isChecked");
+
+
+</script>
