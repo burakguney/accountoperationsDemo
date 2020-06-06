@@ -36,11 +36,11 @@ app.use(expressSession({
 }))
 
 app.use((req, res, next) => {
-    const { userId, email } = req.session
+    const { userId, email, userName } = req.session
     if (userId) {
         res.locals = {
             displayLink: true,
-            title: email
+            user: userName
         }
     } else {
         res.locals = {
@@ -63,7 +63,7 @@ app.use(methodOverride("_method"))
 
 app.engine("handlebars", expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(handlebars),
-    helpers:{}
+    helpers: {}
 }));
 app.set("view engine", "handlebars");
 

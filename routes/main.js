@@ -67,7 +67,7 @@ router.post('/login', (req, res) => {
         if (user) {
 
             if (user.password === password) {
-
+                req.session.userName = user.name;
                 req.session.userId = user._id
                 req.session.email = user.email
                 res.redirect("/userlist")
